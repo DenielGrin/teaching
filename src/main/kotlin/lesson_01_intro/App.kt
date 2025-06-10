@@ -13,7 +13,7 @@ class Character(val name: String, val species: String) {
 
     fun catchphrase() {
         if (name == "Рик Санчез") {
-            println("Wubba Lubba Dub Dub!")
+            println("Вубба Лубба Даб Даб!")
         } else if (name == "Морти Смит") {
             println("О, боже, Рик!")
         } else {
