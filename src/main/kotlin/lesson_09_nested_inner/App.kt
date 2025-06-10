@@ -1,7 +1,10 @@
 package lesson_09_nested_inner
 
 // 1. Внешний класс
-class Spaceship(val name: String, private val capacity: Int) { // 'capacity' - приватное свойство
+class Spaceship(
+    val name: String,
+    private val capacity: Int
+) { // 'capacity' - приватное свойство
 
     fun displayInfo() {
         println("Космический корабль: $name, вместимость: $capacity пассажиров.")
@@ -58,29 +61,29 @@ fun main() {
 
     println("\n--- Работа с Вложенным Классом (Nested Class) ---")
     // Создаем экземпляр вложенного класса напрямую, без объекта Spaceship
-    val galacticNav = Spaceship.NavigationSystem("Измерение Сквончи")
+    val galacticNav = Spaceship.NavigationSystem(targetDimension = "Измерение Сквончи")
     galacticNav.plotCourse()
     galacticNav.calibrate()
 
     // Можно создать несколько экземпляров NavigationSystem, не привязанных к конкретному Spaceship
-    val anotherNav = Spaceship.NavigationSystem("Галактический Центр")
+    val anotherNav = Spaceship.NavigationSystem(targetDimension = "Галактический Центр")
     anotherNav.plotCourse()
 
     println("\n--- Работа с Внутренним Классом (Inner Class) ---")
-    val burpship = Spaceship("БурпШип", 10)
+    val burpship = Spaceship(name = "БурпШип", capacity = 10)
     burpship.displayInfo()
 
     // Для создания экземпляра Inner Class нужен экземпляр внешнего класса
     val burpshipPassengers = burpship.PassengerBay() // Создаем PassengerBay для burpship
-    burpshipPassengers.addPassengers(5)
-    burpshipPassengers.addPassengers(7) // Попытка добавить больше, чем capacity
-    burpshipPassengers.removePassengers(3)
+    burpshipPassengers.addPassengers(count = 5)
+    burpshipPassengers.addPassengers(count = 7) // Попытка добавить больше, чем capacity
+    burpshipPassengers.removePassengers(count = 3)
 
     println("Имя корабля из PassengerBay: ${burpshipPassengers.getShipName()}")
 
     // Создаем другой корабль и его PassengerBay
-    val plumbusHauler = Spaceship("Пламбус-такси", 2)
+    val plumbusHauler = Spaceship(name = "Пламбус-такси", capacity = 2)
     val plumbusPassengers = plumbusHauler.PassengerBay()
-    plumbusPassengers.addPassengers(1)
+    plumbusPassengers.addPassengers(count = 1)
     println("Имя корабля из другого PassengerBay: ${plumbusPassengers.getShipName()}")
 }

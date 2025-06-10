@@ -63,12 +63,12 @@ class SpaceShip(val name: String) {
 
         fun createDefaultShip(): SpaceShip {
             println("Создаем стандартный космический корабль.")
-            return SpaceShip("Грузовой шаттл")
+            return SpaceShip(name = "Грузовой шаттл")
         }
 
         fun createPlumbusPoweredShip(name: String): SpaceShip {
             println("Создаем космический корабль с питанием от Пламбуса: $name")
-            return SpaceShip(name)
+            return SpaceShip(name = name)
         }
     }
 
@@ -95,9 +95,9 @@ fun main() {
 
     // --- Data-классы ---
     println("\n--- Data-классы ---")
-    val firstEpisode = Episode(1, 1, "Пилот", "02.12.2013")
-    val secondEpisode = Episode(1, 1, "Пилот", "02.12.2013") // Та же информация
-    val thirdEpisode = Episode(1, 2, "Газорпазорп", "09.12.2013")
+    val firstEpisode = Episode(season = 1, episodeNumber = 1, title = "Пилот", airDate = "02.12.2013")
+    val secondEpisode = Episode(season = 1, episodeNumber = 1, title = "Пилот", airDate = "02.12.2013") // Та же информация
+    val thirdEpisode = Episode(season = 1, episodeNumber = 2, title = "Газорпазорп", airDate = "09.12.2013")
 
     println("Первый эпизод: ${firstEpisode.getFullTitle()} (Дата: ${firstEpisode.airDate})")
     println("Третий эпизод: ${thirdEpisode.getFullTitle()}")
@@ -134,7 +134,7 @@ fun main() {
     println("\n--- Object-классы (Singleton) ---")
     InterdimensionalCouncil.addRick() // Доступ к единственному экземпляру через имя объекта
     InterdimensionalCouncil.addRick()
-    InterdimensionalCouncil.holdVote("Разрешение на межпространственные продажи Пламбусов")
+    InterdimensionalCouncil.holdVote(topic = "Разрешение на межпространственные продажи Пламбусов")
 
     val councilRef1 = InterdimensionalCouncil
     val councilRef2 = InterdimensionalCouncil
@@ -145,7 +145,7 @@ fun main() {
     val defaultShip = SpaceShip.createDefaultShip() // Вызов "статического" метода
     defaultShip.activateShields()
 
-    val plumbusShip = SpaceShip.createPlumbusPoweredShip("Морти's Cruiser")
+    val plumbusShip = SpaceShip.createPlumbusPoweredShip(name = "Морти's Cruiser")
     plumbusShip.activateShields()
 
     println("Максимальная скорость: ${SpaceShip.MAX_SPEED_LIGHT_YEARS_PER_HOUR} световых лет/час")

@@ -40,7 +40,10 @@ open class AlienBeing(val species: String) {
     }
 }
 
-class AdvancedAlien(species: String, val techLevel: Int) : AlienBeing(species) {
+class AdvancedAlien(
+    species: String,
+    val techLevel: Int
+) : AlienBeing(species = species) {
     fun showAbilities() {
         println("$species с уровнем технологий $techLevel.")
         // Доступ к protected членам родительского класса разрешен
@@ -62,7 +65,7 @@ fun main() {
 
     // --- Public ---
     println("\n--- Public Character ---")
-    val morty = PublicCharacter("Морти")
+    val morty = PublicCharacter(name = "Морти")
     morty.greet() // Доступно отовсюду
 
     // --- Private ---
@@ -74,18 +77,21 @@ fun main() {
 
     // --- Protected ---
     println("\n--- Protected Alien ---")
-    val cronenberg = AlienBeing("Кроненберг")
+    val cronenberg = AlienBeing(species = "Кроненберг")
     cronenberg.introduce()
     // cronenberg.secretPower // ОШИБКА КОМПИЛЯЦИИ: 'secretPower' - protected
     // cronenberg.displaySecretPower() // ОШИБКА КОМПИЛЯЦИИ: 'displaySecretPower' - protected
 
-    val mortyJr = AdvancedAlien("Морти-младший (Газорпиец)", 7)
+    val mortyJr = AdvancedAlien(
+        species = "Морти-младший (Газорпиец)",
+        techLevel = 7
+    )
     mortyJr.introduce()
     mortyJr.showAbilities() // Метод 'showAbilities' имеет доступ к 'protected' членам родителя
 
     // --- Internal ---
     println("\n--- Internal Gadget ---")
-    val portalDevice = ModuleGadget("Портальное устройство")
+    val portalDevice = ModuleGadget(type = "Портальное устройство")
     portalDevice.useGadget() // Доступно, так как находится в том же модуле (в нашем проекте)
 
     // Если бы ModuleGadget был в другом модуле, он был бы недоступен без явного импорта или был бы приватным.

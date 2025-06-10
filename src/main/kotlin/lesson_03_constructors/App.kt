@@ -22,7 +22,7 @@ class PortalGun(val maxCharges: Int) { // Основной конструкто�
     }
 
     // Дополнительный конструктор 2: Случайное количество зарядов
-    constructor(isRandom: Boolean) : this(if (isRandom) Random.nextInt(10, 101) else 10) {
+    constructor(isRandom: Boolean) : this(if (isRandom) Random.nextInt(from = 10, until = 101) else 10) {
         // Делегирование основному конструктору с условием
         println("Создана портальная пушка со случайным или минимальным количеством зарядов.")
     }
@@ -62,10 +62,10 @@ fun main() {
 
     // Создание объекта с использованием основного конструктора
     println("\n--- Создание PortalGun через основной конструктор (150 зарядов) ---")
-    val heavyDutyPortalGun = PortalGun(150)
+    val heavyDutyPortalGun = PortalGun(maxCharges = 150)
     heavyDutyPortalGun.fire()
     heavyDutyPortalGun.fire()
-    heavyDutyPortalGun.recharge(10)
+    heavyDutyPortalGun.recharge(amount = 10)
 
     // Создание объекта с использованием дополнительного конструктора (дефолтное количество)
     println("\n--- Создание PortalGun через дополнительный конструктор (дефолтные 50 зарядов) ---")
@@ -74,17 +74,17 @@ fun main() {
 
     // Создание объекта с использованием дополнительного конструктора (случайное количество)
     println("\n--- Создание PortalGun через дополнительный конструктор (случайное количество) ---")
-    val experimentalPortalGun = PortalGun(true)
+    val experimentalPortalGun = PortalGun(isRandom = true)
     experimentalPortalGun.fire()
     experimentalPortalGun.fire()
 
     // Демонстрация класса Rick, который получает PortalGun через конструктор
     println("\n--- Рик и его портальные пушки ---")
-    val rickWithHeavyDutyGun = Rick(heavyDutyPortalGun)
+    val rickWithHeavyDutyGun = Rick(portalGun = heavyDutyPortalGun)
     rickWithHeavyDutyGun.travelToRandomDimension()
     rickWithHeavyDutyGun.travelToRandomDimension()
 
-    val rickWithStandardGun = Rick(standardPortalGun)
+    val rickWithStandardGun = Rick(portalGun = standardPortalGun)
     rickWithStandardGun.travelToRandomDimension()
 
     println("\n--- Демонстрация ошибок инициализации ---")

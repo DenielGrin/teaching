@@ -3,7 +3,10 @@ package lesson_04_inheritance
 // 1. Базовый (родительский) класс
 // Чтобы класс можно было наследовать, его нужно объявить как 'open'.
 // По умолчанию классы в Kotlin 'final' (не наследуемые).
-open class Creature(val name: String, var dimension: String) {
+open class Creature(
+    val name: String,
+    var dimension: String
+) {
     // Свойство, которое может быть переопределено в дочерних классах
     open val sound: String = "Неизвестный звук"
 
@@ -19,7 +22,14 @@ open class Creature(val name: String, var dimension: String) {
 
 // 2. Производный (дочерний) класс 'Human'
 // Наследуется от 'Creature' с помощью двоеточия ':'.
-class Human(name: String, dimension: String, val profession: String) : Creature(name, dimension) {
+class Human(
+    name: String,
+    dimension: String,
+    val profession: String
+) : Creature(
+    name = name,
+    dimension = dimension
+) {
 
     // Переопределение свойства 'sound'
     override val sound: String = "Разговорная речь"
@@ -38,7 +48,14 @@ class Human(name: String, dimension: String, val profession: String) : Creature(
 
 // 3. Производный класс 'Alien'
 // Также наследуется от 'Creature'.
-class Alien(name: String, dimension: String, val numberOfEyes: Int) : Creature(name, dimension) {
+class Alien(
+    name: String,
+    dimension: String,
+    val numberOfEyes: Int
+) : Creature(
+    name = name,
+    dimension = dimension
+) {
 
     // Переопределение свойства 'sound'
     override val sound: String = "Инопланетные звуки"
@@ -57,20 +74,31 @@ fun main() {
     println("--- Урок 4: Наследование ---")
 
     println("\n--- Базовое существо ---")
-    val squanchy = Creature("Сквончи", "Измерение Сквончи")
+    val squanchy = Creature(
+        name = "Сквончи",
+        dimension = "Измерение Сквончи"
+    )
     squanchy.describe()
     squanchy.roam()
     println("Звук: ${squanchy.sound}")
 
     println("\n--- Персонаж - Человек ---")
-    val rick = Human("Рик Санчез", "Земля C-137", "Ученый")
+    val rick = Human(
+        name = "Рик Санчез",
+        dimension = "Земля C-137",
+        profession = "Ученый"
+    )
     rick.describe() // Вызывается переопределенный метод Human
     rick.roam()     // Метод, унаследованный от Creature
     rick.work()     // Собственный метод Human
     println("Звук: ${rick.sound}")
 
     println("\n--- Персонаж - Инопланетянин ---")
-    val mrMeeseeks = Alien("Мистер Мисикс", "Неизвестное измерение", 2)
+    val mrMeeseeks = Alien(
+        name = "Мистер Мисикс",
+        dimension = "Неизвестное измерение",
+        numberOfEyes = 2
+    )
     mrMeeseeks.describe() // Вызывается переопределенный метод Alien
     mrMeeseeks.roam()      // Метод, унаследованный от Creature
     mrMeeseeks.abduct()    // Собственный метод Alien

@@ -54,20 +54,20 @@ fun main() {
     // --- Демонстрация функции расширения для Character ---
     println("\n--- Расширение Character ---")
     // Создаем экземпляр Character (из урока 1)
-    val rickC137 = Character("Рик C-137", "Человек")
-    val mortyC137 = Character("Морти C-137", "Человек")
+    val rickC137 = Character(name = "Рик C-137", species = "Человек")
+    val mortyC137 = Character(name = "Морти C-137", species = "Человек")
 
     rickC137.introduce() // Обычный метод класса Character
-    rickC137.travelToDimension("Измерение Флюбовых Людей") // Вызов функции расширения!
+    rickC137.travelToDimension(newDimension = "Измерение Флюбовых Людей") // Вызов функции расширения!
 
     mortyC137.introduce()
-    mortyC137.travelToDimension("Планета Кроненбергов")
+    mortyC137.travelToDimension(newDimension = "Планета Кроненбергов")
 
     // --- Демонстрация функции расширения для List<Episode> ---
     println("\n--- Расширение List<Episode> ---")
-    val episode1 = Episode(1, 1, "Пилот", "02.12.2013")
-    val episode2 = Episode(1, 2, "Газорпазорп", "09.12.2013")
-    val episode3 = Episode(2, 3, "Анатомический парк", "10.08.2014")
+    val episode1 = Episode(season = 1, episodeNumber = 1, title = "Пилот", airDate = "02.12.2013")
+    val episode2 = Episode(season = 1, episodeNumber = 2, title = "Газорпазорп", airDate = "09.12.2013")
+    val episode3 = Episode(season = 2, episodeNumber = 3, title = "Анатомический парк", airDate = "10.08.2014")
 
     val allEpisodes = listOf(episode1, episode2, episode3)
     allEpisodes.printAllTitles() // Вызов функции расширения для списка

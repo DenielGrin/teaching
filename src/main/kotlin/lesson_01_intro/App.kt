@@ -3,7 +3,10 @@ package lesson_01_intro
 // 1. Определение класса
 // Класс — это шаблон или чертеж для создания объектов.
 // Здесь мы определяем класс 'Character' с двумя свойствами: 'name' и 'species'.
-class Character(val name: String, val species: String) {
+class Character(
+    val name: String,
+    val species: String
+) {
 
     // 2. Метод класса
     // Метод — это функция, которая принадлежит классу и оперирует его данными.

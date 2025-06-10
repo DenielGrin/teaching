@@ -12,7 +12,10 @@ interface Communicator {
 // Абстрактный класс не может быть инстанцирован напрямую.
 // Он может содержать как реализованные, так и абстрактные (без реализации) методы.
 // От него могут наследоваться другие классы.
-abstract class CosmicBeing(val name: String, val dimension: String) {
+abstract class CosmicBeing(
+    val name: String,
+    val dimension: String
+) {
     // Реализованный метод в абстрактном классе, помеченный как 'open'
     open fun introduce() {
         println("Я $name, существо из измерения $dimension.")
@@ -27,7 +30,13 @@ abstract class CosmicBeing(val name: String, val dimension: String) {
 }
 
 // 3. Класс 'Rick' реализует интерфейс 'Communicator' и наследуется от CosmicBeing
-class Rick(name: String, dimension: String) : CosmicBeing(name, dimension), Communicator {
+class Rick(
+    name: String,
+    dimension: String
+) : CosmicBeing(
+    name = name,
+    dimension = dimension
+), Communicator {
     // Переопределение абстрактного метода
     override fun performCosmicDuty() {
         println("$name занят спасением или разрушением мультивселенной.")
@@ -60,7 +69,13 @@ class Rick(name: String, dimension: String) : CosmicBeing(name, dimension), Comm
 }
 
 // 4. Класс 'Morty' также реализует интерфейс 'Communicator' и наследуется от CosmicBeing
-class Morty(name: String, dimension: String) : CosmicBeing(name, dimension), Communicator {
+class Morty(
+    name: String,
+    dimension: String
+) : CosmicBeing(
+    name = name,
+    dimension = dimension
+), Communicator {
     // Переопределение абстрактного метода
     override fun performCosmicDuty() {
         println("$name пытается просто выжить в этой безумной вселенной.")
@@ -109,9 +124,9 @@ class CouncilOfRicks(private val members: List<Rick>) {
 fun main() {
     println("--- Урок 6: Полиморфизм и Интерфейсы ---")
 
-    val c137Rick = Rick("Рик C-137", "Измерение C-137")
-    val fatRick = Rick("Толстый Рик", "Измерение J19 Zeta 7")
-    val mortyPrime = Morty("Морти Прайм", "Измерение C-137")
+    val c137Rick = Rick(name = "Рик C-137", dimension = "Измерение C-137")
+    val fatRick = Rick(name = "Толстый Рик", dimension = "Измерение J19 Zeta 7")
+    val mortyPrime = Morty(name = "Морти Прайм", dimension = "Измерение C-137")
 
     println("\n--- Демонстрация методов персонажей ---")
     c137Rick.introduce()
